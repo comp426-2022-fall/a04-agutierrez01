@@ -8,11 +8,11 @@ app.use(express.urlencoded({extended: true}))
 
 var args = minimist(process.argv.slice(2))
 
-var port = 5000
+const port = 5000
 
-var sides = 6
-var dice = 2
-var rolls = 1
+const sides = 6
+const dice = 2
+const rolls = 1
 
 if ("port" in args) {
     port = args.port
@@ -33,21 +33,21 @@ app.post('/app/roll/', (req, res) => {
     sides = parseInt(req.body.sides)
     dice = parseInt(req.body.dice)
     rolls = parseInt(req.body.rolls)
-    res.send(roll(sides, dice, rolls))
+    res.send(roll(6, 2, 1))
 })
 
 app.get('/app/roll/:sides/', (req, res) => {
     sides = parseInt(req.params.sides)
     dice = 2
     rolls = 1
-    res.send(roll(sides, dice, rolls))
+    res.send(roll(sides, 2, 1))
 })
 
 app.get('/app/roll/:sides/:dice/', (req, res) => {
     sides = parseInt(req.params.sides)
     dice = parseInt(req.params.dice) 
     rolls = 1
-    res.send(roll(sides, dice, rolls))
+    res.send(roll(sides, dice, 1))
 })
 
 app.get('/app/roll/:sides/:dice/:rolls/', (req, res) => {
